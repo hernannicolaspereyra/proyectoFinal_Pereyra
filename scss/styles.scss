@@ -143,21 +143,26 @@
                         align-items: center;
                         justify-content: center;
                         img{
-                            width: 25vh;
-                            height: 25vh;
+                            width: 20vh;
+                            height: 20vh;
                             grid-area: img;
                             padding-right: 10px;
                         }
                         h2{
                             grid-area: h2;
+                            font-size: .8rem;
                         }
                         p{
                             grid-area: p;
+                            font-size: .8rem;
                         }
                         button{
                             grid-area: button;
                             border-radius: 5%;
-                            width: 160px;
+                            font-size: .8rem;
+                        }
+                        button:hover{
+                            background: linear-gradient(to bottom right, #00f155, #208041);
                         }
                     }
                 }
