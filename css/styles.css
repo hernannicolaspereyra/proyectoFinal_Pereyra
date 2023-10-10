@@ -74,8 +74,55 @@
           border-radius: 5%; }
         main .categorias .categorias-tarjeta p {
           font-size: .8rem; }
-    main .productos {
+    main .productos .productos-titulo {
+      text-align: center;
+      color: white;
       background: linear-gradient(to bottom right, #FF0092, #A21F67); }
-      main .productos .productos-titulo {
-        text-align: center;
-        color: white; } }
+    main .productos .productos-tarjetas {
+      display: flex;
+      padding: 0 10px;
+      gap: .5rem; }
+      main .productos .productos-tarjetas .filtros {
+        display: flex;
+        flex-direction: column; }
+        main .productos .productos-tarjetas .filtros .filtros-botones {
+          display: flex;
+          flex-direction: column;
+          gap: .5rem; }
+      main .productos .productos-tarjetas #tarjetas {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 10px;
+        gap: 1rem;
+        height: 510px;
+        overflow-y: scroll; }
+        main .productos .productos-tarjetas #tarjetas .tarjeta-producto {
+          display: grid;
+          grid-template-areas: "img h2" "img p" "img button";
+          text-align: center;
+          box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+          border-radius: 5%;
+          padding: 10px 10px;
+          align-items: center;
+          justify-content: center; }
+          main .productos .productos-tarjetas #tarjetas .tarjeta-producto img {
+            width: 25vh;
+            height: 25vh;
+            grid-area: img;
+            padding-right: 10px; }
+          main .productos .productos-tarjetas #tarjetas .tarjeta-producto h2 {
+            grid-area: h2; }
+          main .productos .productos-tarjetas #tarjetas .tarjeta-producto p {
+            grid-area: p; }
+          main .productos .productos-tarjetas #tarjetas .tarjeta-producto button {
+            grid-area: button;
+            border-radius: 5%;
+            width: 160px; }
+      main .productos .productos-tarjetas #tarjetas::-webkit-scrollbar {
+        background-color: #e01b8b;
+        border-radius: 20px;
+        border: 2px solid #A21F67;
+        width: 10px; }
+      main .productos .productos-tarjetas #tarjetas::-webkit-scrollbar-thumb {
+        background-color: #9e0a5e;
+        border-radius: 20%; } }

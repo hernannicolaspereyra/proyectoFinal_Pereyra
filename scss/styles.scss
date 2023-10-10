@@ -104,10 +104,73 @@
             }
         }
         .productos{
-            background: linear-gradient(to bottom right, #FF0092, #A21F67);
             .productos-titulo{
                 text-align: center;
                 color: white;
+                background: linear-gradient(to bottom right, #FF0092, #A21F67);
+            }
+            .productos-tarjetas{
+                display: flex;
+                padding: 0 10px;
+                gap: .5rem;
+                .filtros{
+                    display: flex;
+                    flex-direction: column;
+                    .filtros-botones{
+                        display: flex;
+                        flex-direction: column;
+                        gap: .5rem;
+                    }
+                }
+                #tarjetas{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 10px 10px;
+                    gap: 1rem;
+                    height: 510px;
+                    overflow-y: scroll;
+                    .tarjeta-producto{
+                        display: grid;
+                        grid-template-areas: 
+                            "img h2"
+                            "img p"
+                            "img button"
+                        ;
+                        text-align: center;
+                        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+                        border-radius: 5%;
+                        padding: 10px 10px;
+                        align-items: center;
+                        justify-content: center;
+                        img{
+                            width: 25vh;
+                            height: 25vh;
+                            grid-area: img;
+                            padding-right: 10px;
+                        }
+                        h2{
+                            grid-area: h2;
+                        }
+                        p{
+                            grid-area: p;
+                        }
+                        button{
+                            grid-area: button;
+                            border-radius: 5%;
+                            width: 160px;
+                        }
+                    }
+                }
+                #tarjetas::-webkit-scrollbar{
+                    background-color: #e01b8b;
+                    border-radius: 20px;
+                    border: 2px solid #A21F67;
+                    width: 10px;
+                }
+                #tarjetas::-webkit-scrollbar-thumb{
+                    background-color: #9e0a5e;
+                    border-radius: 20%;
+                }
             }
         }
     }  
