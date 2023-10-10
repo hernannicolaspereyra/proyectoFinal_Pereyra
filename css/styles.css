@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+@media screen and (max-width: 600px) {
+  header nav {
+    display: grid;
+    grid-template-areas: "logo logo carito carrito" "buscador buscador buscador buscador";
+    justify-content: space-around;
+    padding-top: 10px; }
+    header nav .logo {
+      grid-area: logo; }
+      header nav .logo img {
+        width: 70px;
+        height: 60px; }
+    header nav .buscador {
+      grid-area: buscador;
+      display: flex;
+      justify-content: center; }
+      header nav .buscador input {
+        width: 100%; }
+      header nav .buscador button img {
+        width: 30px;
+        height: 20px; }
+    header nav .btn-carrito {
+      grid-area: carrito; }
+      header nav .btn-carrito button img {
+        width: 40px;
+        height: 40px; }
+  main {
+    background-color: #F5F5F5; }
+    main .carrusel {
+      padding: 20px 30px; }
+      main .carrusel img {
+        height: 13rem; }
+    main .medios-de-pago {
+      display: flex;
+      padding: 0px 40px; }
+      main .medios-de-pago .linea {
+        background-color: black;
+        width: 0.5px; }
+      main .medios-de-pago div {
+        display: flex;
+        gap: 0.5rem;
+        width: 49%;
+        align-items: center; }
+        main .medios-de-pago div p {
+          font-size: 0.8rem; }
+        main .medios-de-pago div img {
+          width: 7vh;
+          height: 7vh; }
+    main .categorias {
+      background-color: white;
+      display: flex;
+      gap: 1rem;
+      padding: 10px 40px;
+      justify-content: space-between; }
+      main .categorias .categorias-tarjeta {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #F5F5F5;
+        width: 5rem;
+        height: 7rem;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        padding-top: 10px;
+        border-radius: 5%; }
+        main .categorias .categorias-tarjeta img {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 5%; }
+        main .categorias .categorias-tarjeta p {
+          font-size: .8rem; }
+    main .productos {
+      background: linear-gradient(to bottom right, #FF0092, #A21F67); }
+      main .productos .productos-titulo {
+        text-align: center;
+        color: white; } }

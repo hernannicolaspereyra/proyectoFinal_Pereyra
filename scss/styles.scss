@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px){
+    header{
+        nav{
+            display: grid;
+            grid-template-areas: 
+                "logo logo carito carrito"
+                "buscador buscador buscador buscador"
+            ;
+            justify-content: space-around;
+            padding-top: 10px;
+            .logo{
+                grid-area: logo;
+                img{
+                    width: 70px;
+                    height: 60px;
+                }
+            }
+            .buscador{
+                grid-area: buscador;
+                display: flex;
+                justify-content: center;
+                input{
+                    width: 100%;
+                }
+                button{
+                    img{
+                        width: 30px;
+                        height: 20px;
+                    }
+                }
+            }
+            .btn-carrito{
+                grid-area: carrito;
+                button{
+                    img{
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }
+    main{
+        background-color: #F5F5F5;
+        .carrusel{
+            padding: 20px 30px;
+            img{
+                height: 13rem;
+            }
+        }
+        .medios-de-pago{
+            display: flex;
+            padding: 0px 40px;
+            .linea{
+                background-color: black;
+                width: 0.5px;
+            }
+            div{
+                display: flex;
+                gap: 0.5rem;
+                width: 49%;
+                align-items: center;
+                p{
+                    font-size: 0.8rem;
+                }
+                img{
+                    width: 7vh;
+                    height: 7vh;
+                }
+            }
+        }
+        .categorias{
+            background-color: white;
+            display: flex;
+            gap: 1rem;
+            padding: 10px 40px;
+            justify-content: space-between;
+            .categorias-tarjeta{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #F5F5F5;
+                width: 5rem;
+                height: 7rem;
+                box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+                padding-top: 10px;
+                border-radius: 5%;
+                img{
+                    width: 60px;
+                    height: 60px;
+                    object-fit: cover;
+                    border-radius: 5%;
+                }
+                p{
+                    font-size: .8rem;
+                }
+            }
+        }
+        .productos{
+            background: linear-gradient(to bottom right, #FF0092, #A21F67);
+            .productos-titulo{
+                text-align: center;
+                color: white;
+            }
+        }
+    }  
+}
+
+
+
