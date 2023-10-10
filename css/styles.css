@@ -13,7 +13,8 @@
       grid-area: logo; }
       header nav .logo img {
         width: 70px;
-        height: 60px; }
+        height: 60px;
+        padding-bottom: 5px; }
     header nav .buscador {
       grid-area: buscador;
       display: flex;
@@ -129,4 +130,21 @@
         width: 10px; }
       main .productos .productos-tarjetas #tarjetas::-webkit-scrollbar-thumb {
         background-color: #9e0a5e;
-        border-radius: 20%; } }
+        border-radius: 20%; }
+  footer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px; }
+    footer .contacto {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding: 10px 30px;
+      border-top: 1px solid #a3a3a3; }
+      footer .contacto .empresa img {
+        width: 20vh; }
+    footer .copyright {
+      border-top: 1px solid #a3a3a3;
+      font-size: .8rem;
+      text-align: center; } }

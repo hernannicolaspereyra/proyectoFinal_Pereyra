@@ -19,6 +19,7 @@
                 img{
                     width: 70px;
                     height: 60px;
+                    padding-bottom: 5px;
                 }
             }
             .buscador{
@@ -177,6 +178,29 @@
                     border-radius: 20%;
                 }
             }
+        }
+    }
+    footer{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        .contacto{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            padding: 10px 30px;
+            border-top: 1px solid rgb(163, 163, 163);
+            .empresa{
+                img{
+                    width: 20vh;
+                }
+            }
+        }
+        .copyright{
+            border-top: 1px solid rgb(163, 163, 163);
+            font-size: .8rem;
+            text-align: center;
         }
     }  
 }
