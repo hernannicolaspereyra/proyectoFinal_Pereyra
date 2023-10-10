@@ -134,8 +134,7 @@
   footer {
     background-color: white;
     display: flex;
-    flex-direction: column;
-    padding-top: 10px; }
+    flex-direction: column; }
     footer .contacto {
       display: flex;
       flex-direction: column;
