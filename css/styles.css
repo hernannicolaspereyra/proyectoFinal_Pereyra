@@ -11,7 +11,12 @@
     display: grid;
     grid-template-areas: "logo logo carito carrito" "buscador buscador buscador buscador";
     justify-content: space-around;
-    padding-top: 10px; }
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); }
     header nav .logo {
       grid-area: logo; }
       header nav .logo img {
@@ -36,14 +41,15 @@
     background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
-    align-items: center; }
+    align-items: center;
+    padding-top: 100px; }
     main .carrito-de-compras {
       text-align: center;
       width: 95%;
       background-color: white;
-      height: 500px;
+      height: 600px;
       position: fixed;
-      top: 1;
+      top: 20px;
       z-index: 1000;
       border: 2px solid black;
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); }
@@ -52,7 +58,7 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        height: 395px;
+        height: 495px;
         overflow-y: scroll; }
         main .carrito-de-compras #tarjetas-carrito .productos-carrito {
           display: grid;
@@ -72,7 +78,9 @@
       main .carrito-de-compras .botones-carrito {
         display: flex;
         gap: 1rem;
-        padding: 5px; }
+        padding: 5px;
+        align-items: center;
+        justify-content: space-around; }
     main .carrusel {
       padding: 20px 30px; }
       main .carrusel img {

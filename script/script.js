@@ -53,7 +53,15 @@ let productos = [
     { id: 24, nombre: "Plataforma Ps3", categoria: "Accesorios", precio: 10000, stock: 1, ruta: "plataforma ps3.jpg" }
 ]
 
+//renderizo el carrito y verifico si existen productos en el storage
+
 let carrito = []
+let carritoEnStorage = localStorage.getItem("carrito")
+
+if (carritoEnStorage){
+    carrito = JSON.parse(carritoEnStorage)
+    mostrarCarrito(carrito)
+}
 
 // funcion para mostrar productos
 
@@ -194,4 +202,73 @@ function mostrarCarrito(carrito) {
         `
         tarjetas.appendChild(tarjeta)    
     })
+}
+
+// botones en el carrito
+
+let botonesCarrito = document.getElementsByClassName("btn-en-carrito")
+
+for(let i = 0; i < botonesCarrito.length; i++){
+    let carritoDeCompras = document.getElementsByClassName("carrito-de-compras")
+    if ( i === 0){
+            botonesCarrito[0].addEventListener("click", () => {
+            carrito = []
+            localStorage.clear()
+            alert("Compra realizada exitosamente!!")
+            carritoDeCompras[0].className = "ocultar"
+       }) 
+    }else if (i === 1){
+            botonesCarrito[1].addEventListener("click", () => {
+            carritoDeCompras[0].className = "ocultar"
+        })
+    }else{
+        botonesCarrito[2].addEventListener("click", () => {
+            carrito = []
+            localStorage.clear()
+            alert("Se vacio el carrito de compras")
+            carritoDeCompras[0].className = "ocultar"
+        })
+    }
+}
+
+// botones de orden
+
+let botonesOrden = document.getElementsByClassName("btn-filtros")
+for (let i = 0; i < botonesOrden.length; i++) {
+    if (i == 0) {
+        botonesOrden[0].addEventListener("click", () => {
+            let productoFiltrado = filtrarPorCategoria(productos, "Juegos")
+            mostrarPorductos(productoFiltrado)
+        })
+    } else if (i == 1) {
+        botonesOrden[1].addEventListener("click", () => {
+            let productoFiltrado = filtrarPorCategoria(productos, "Consolas")
+            mostrarPorductos(productoFiltrado)
+        })
+    } else if (i == 2) {
+        botonesOrden[2].addEventListener("click", () => {
+            let productoFiltrado = filtrarPorCategoria(productos, "Accesorios")
+            mostrarPorductos(productoFiltrado)
+        })
+    } else if (i == 3){
+        botonesOrden[3].addEventListener("click", () => {
+            ordenar(productos, "precio", "asc")
+            mostrarPorductos(productos)
+        })
+    } else if (i == 4){
+        botonesOrden[4].addEventListener("click", () => {
+            ordenar(productos, "precio", "des")
+            mostrarPorductos(productos)
+        })
+    } else if (i == 5){
+        botonesOrden[5].addEventListener("click", () => {
+            ordenar(productos, "nombre", "asc")
+            mostrarPorductos(productos)
+        })
+    }else{
+        botonesOrden[6].addEventListener("click", () => {
+            ordenar(productos, "nombre", "dec")
+            mostrarPorductos(productos)
+        })
+    }
 }
