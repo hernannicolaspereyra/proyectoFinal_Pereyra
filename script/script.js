@@ -320,3 +320,16 @@ for (let i = 0; i < botonesOrden.length; i++) {
         })
     }
 }
+
+// funcion para mostrar el total del carrito
+
+function mostrarTotalDelCarrito(carrito){
+    let totalCarrito = document.getElementById("total-del-carrito")
+    totalCarrito.innerHTML = []
+    let total = document.createElement("div")
+    let totalAPagar = carrito.reduce((acumulador,producto) => acumulador + producto.precioTotal,0)
+    total.innerHTML = `
+        <h2>El Total a pagar es: $${totalAPagar}<h2/>
+    `
+    totalCarrito.appendChild(total)
+}
