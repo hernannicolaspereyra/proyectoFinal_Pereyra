@@ -97,9 +97,25 @@ function agregarProductoAlCarrito(productos, carrito, e){
                 productoEnCarrito.unidades++
                 productoEnCarrito.precioTotal += productoEncontrado.precio
                 productoEnCarrito.stock--
-                alert("Producto agregado exitosamente")
+                Toastify({
+                    text: "Producto agregado exitosamente!",
+                    className: "info",
+                    gravity: "bottom",
+                    duration: 1500,
+                    style: {
+                        background: "linear-gradient(to bottom right, #00f155, #208041)",
+                    }
+                  }).showToast();
             }else{
-                alert("Ya no queda stock de este producto!")
+                Toastify({
+                    text: "Producto sin stock!",
+                    className: "info",
+                    gravity: "bottom",
+                    duration: 1500,
+                    style: {
+                        background: "linear-gradient(to bottom right, #f10000, #b60000)",
+                    }
+                  }).showToast();
             }    
         }else{
             carrito.push({
@@ -112,11 +128,27 @@ function agregarProductoAlCarrito(productos, carrito, e){
                 precioTotal: productoEncontrado.precio,
                 stock: productoEncontrado.stock -1    
             })
-            alert("Producto agregado exitosamente")
+            Toastify({
+                text: "Producto agregado exitosamente!",
+                className: "info",
+                gravity: "bottom",
+                duration: 1500,
+                style: {
+                    background: "linear-gradient(to bottom right, #00f155, #208041)",
+                }
+              }).showToast();
         }
         localStorage.setItem("carrito", JSON.stringify(carrito))
     }else{
-        alert("No hay stock de este producto")
+        Toastify({
+            text: "Producto sin stock!",
+            className: "info",
+            gravity: "bottom",
+            duration: 1500,
+            style: {
+                background: "linear-gradient(to bottom right, #f10000, #b60000)",
+            }
+          }).showToast();
     }
 }
 
@@ -175,7 +207,11 @@ let botonCarrito = document.getElementById("btn-carrito")
 
 botonCarrito.addEventListener("click", () => {
     if (carrito.length <= 0) {
-        alert("El carrito esta vacio")
+        Swal.fire(
+            'El carrito esta vacio',
+            'click para continuar',
+            'error'
+          )
     } else {
         let carritoDeCompras = document.getElementsByClassName("ocultar")
         carritoDeCompras[0].className = "carrito-de-compras"
@@ -214,7 +250,11 @@ for(let i = 0; i < botonesCarrito.length; i++){
             botonesCarrito[0].addEventListener("click", () => {
             carrito = []
             localStorage.clear()
-            alert("Compra realizada exitosamente!!")
+            Swal.fire(
+                'Compra realizada exitosamente!',
+                'Click para continuar',
+                'success'
+              )
             carritoDeCompras[0].className = "ocultar"
        }) 
     }else if (i === 1){
@@ -225,7 +265,15 @@ for(let i = 0; i < botonesCarrito.length; i++){
         botonesCarrito[2].addEventListener("click", () => {
             carrito = []
             localStorage.clear()
-            alert("Se vacio el carrito de compras")
+            Toastify({
+                text: "Carrito de compras limpiado",
+                className: "info",
+                gravity: "top",
+                duration: 1500,
+                style: {
+                    background: "linear-gradient(to bottom right, #006eff, #0045a0)",
+                }
+              }).showToast();
             carritoDeCompras[0].className = "ocultar"
         })
     }
