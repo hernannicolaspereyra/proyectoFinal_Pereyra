@@ -53,8 +53,13 @@ let productos = [
     { id: 24, nombre: "Plataforma Ps3", categoria: "Accesorios", precio: 10000, stock: 1, ruta: "plataforma ps3.jpg" }
 ]
 
+let carrito = []
+
+// funcion para mostrar productos
+
 function mostrarPorductos(productos) {
     let tarjetas = document.getElementById("tarjetas")
+    tarjetas.innerHTML = []
     productos.forEach(producto => {
         let tarjeta = document.createElement("div")
         tarjeta.className = "tarjeta-producto"
@@ -71,3 +76,122 @@ function mostrarPorductos(productos) {
     })
 }
 mostrarPorductos(productos)
+
+//funcion para agregar productos al carrito
+
+function agregarProductoAlCarrito(productos, carrito, e){
+    let productoEncontrado = productos.find(producto => producto.id === Number(e.target.id))
+    let productoEnCarrito = carrito.find(producto => producto.id === productoEncontrado.id)
+
+    if (productoEncontrado.stock > 0){
+        if(productoEnCarrito){
+            if (productoEnCarrito.stock > 0){
+                productoEnCarrito.unidades++
+                productoEnCarrito.precioTotal += productoEncontrado.precio
+                productoEnCarrito.stock--
+                alert("Producto agregado exitosamente")
+            }else{
+                alert("Ya no queda stock de este producto!")
+            }    
+        }else{
+            carrito.push({
+                id: productoEncontrado.id,
+                nombre: productoEncontrado.nombre,
+                precioUnitario: productoEncontrado.precio,
+                unidades: 1,
+                ruta: productoEncontrado.ruta,
+                precio: productoEncontrado.precio,
+                precioTotal: productoEncontrado.precio,
+                stock: productoEncontrado.stock -1    
+            })
+            alert("Producto agregado exitosamente")
+        }
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+    }else{
+        alert("No hay stock de este producto")
+    }
+}
+
+//Funcion para filtrar productos por categoria
+
+function filtrarPorCategoria(productos, categoriaSeleccionada) {
+    return productos.filter(producto => producto.categoria === categoriaSeleccionada)
+}
+
+//Funcion ordenar recibe como parametros un array,propiedad a ordenar,y forma(asc = ascendente,des = descendente)
+
+function ordenar(productos, propiedad, forma) {
+
+    if (forma == "asc") {
+        productos.sort((a, b) => {
+            if (a[propiedad] > b[propiedad]) {
+                return 1
+            }
+            if (a[propiedad] < b[propiedad]) {
+                return -1
+            }
+            return 0
+        })
+    } else {
+        productos.sort((a, b) => {
+            if (a[propiedad] < b[propiedad]) {
+                return 1
+            }
+            if (a[propiedad] > b[propiedad]) {
+                return -1
+            }
+            return 0
+        })
+    }
+}
+
+//Buscador
+
+let buscador = document.getElementById("buscador-input")
+let btnBuscador = document.getElementById("boton-buscar")
+
+buscador.addEventListener("change", () => {
+    let productoEncontrado = productos.filter(producto => producto.nombre.includes(buscador.value))
+    mostrarPorductos(productoEncontrado)
+    if (productoEncontrado.length === 0) {
+        let productoNoEncontrado = document.createElement("H2")
+        productoNoEncontrado.innerText = "Lo siento,no encontramos el producto que deseas buscar"
+        productoNoEncontrado.className = ""
+        tarjetas.appendChild(productoNoEncontrado)
+    }
+})
+
+// boton carrito
+
+let botonCarrito = document.getElementById("btn-carrito")
+
+botonCarrito.addEventListener("click", () => {
+    if (carrito.length <= 0) {
+        alert("El carrito esta vacio")
+    } else {
+        let carritoDeCompras = document.getElementsByClassName("ocultar")
+        carritoDeCompras[0].className = "carrito-de-compras"
+        mostrarCarrito(carrito)
+        mostrarTotalDelCarrito(carrito)
+    }
+})
+
+// funcion para mostrar el carrito
+
+function mostrarCarrito(carrito) {
+    let tarjetas = document.getElementById("tarjetas-carrito")
+    
+    tarjetas.innerHTML = ""
+    carrito.forEach(producto => {
+        let tarjeta = document.createElement("div")
+        tarjeta.className = "productos-carrito"
+        tarjeta.innerHTML = `
+            <img src= "./img/${producto.ruta}" alt="imagen-producto">
+            <h2>${producto.nombre}</h2>
+            <p>Unidades: ${producto.unidades}</p>
+            <p>Precio Unitario: $${producto.precio}</p>
+            <p>Precio Total: $${producto.precioTotal}</p>
+        `
+        tarjetas.appendChild(tarjeta)    
+    })
+}
