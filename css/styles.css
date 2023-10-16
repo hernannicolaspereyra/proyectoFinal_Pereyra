@@ -252,3 +252,12 @@ footer {
           main .productos .productos-tarjetas #tarjetas .tarjeta-producto img {
             width: 20vh;
             height: 20vh; } }
+
+@media screen and (min-width: 1024px) {
+  main .carrito-de-compras #tarjetas-carrito {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between; }
+    main .carrito-de-compras #tarjetas-carrito .productos-carrito {
+      width: 250px;
+      height: 200px; } }
