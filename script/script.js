@@ -18,7 +18,7 @@ function principal(productos) {
         carrito = JSON.parse(carritoEnStorage)
         mostrarCarrito(carrito)
     }
-    
+
 
     mostrarPorductos(productos)
 
@@ -29,13 +29,15 @@ function principal(productos) {
 
     buscador.addEventListener("change", () => {
         let productoEncontrado = productos.filter(producto => producto.nombre.includes(buscador.value))
-        mostrarPorductos(productoEncontrado)
-        if (productoEncontrado.length === 0) {
-            let productoNoEncontrado = document.createElement("H2")
-            productoNoEncontrado.innerText = "Lo siento,no encontramos el producto que deseas buscar"
-            productoNoEncontrado.className = ""
-            tarjetas.appendChild(productoNoEncontrado)
-        }
+        btnBuscador.addEventListener("click", () => {
+            mostrarPorductos(productoEncontrado)
+            if (productoEncontrado.length === 0) {
+                let productoNoEncontrado = document.createElement("H2")
+                productoNoEncontrado.innerText = "Lo siento,no encontramos el producto que deseas buscar"
+                productoNoEncontrado.className = ""
+                tarjetas.appendChild(productoNoEncontrado)
+            }
+        })
     })
 
     // boton carrito
@@ -44,11 +46,7 @@ function principal(productos) {
 
     botonCarrito.addEventListener("click", () => {
         if (carrito.length <= 0) {
-            Swal.fire(
-                'El carrito esta vacio',
-                'click para continuar',
-                'error'
-            )
+            alerta("error", "El carrito esta vacio", "Click para continuar")
         } else {
             let carritoDeCompras = document.getElementsByClassName("ocultar")
             carritoDeCompras[0].className = "carrito-de-compras"
@@ -67,11 +65,7 @@ function principal(productos) {
             botonesCarrito[0].addEventListener("click", () => {
                 carrito = []
                 localStorage.clear()
-                Swal.fire(
-                    'Compra realizada exitosamente!',
-                    'Click para continuar',
-                    'success'
-                )
+                alerta("success", "Compra realizada exitosamente", "Click para continuar")
                 carritoDeCompras[0].className = "ocultar"
             })
         } else if (i === 1) {
@@ -82,15 +76,7 @@ function principal(productos) {
             botonesCarrito[2].addEventListener("click", () => {
                 carrito = []
                 localStorage.clear()
-                Toastify({
-                    text: "Carrito de compras limpiado",
-                    className: "info",
-                    gravity: "top",
-                    duration: 1500,
-                    style: {
-                        background: "linear-gradient(to bottom right, #006eff, #0045a0)",
-                    }
-                }).showToast();
+                tostada("Carrito limpiado!", "top", "#0046D2", "#002E8A")
                 carritoDeCompras[0].className = "ocultar"
             })
         }
@@ -150,7 +136,7 @@ function mostrarPorductos(productos) {
         tarjeta.innerHTML = `
             <img src="./img/${producto.ruta}" alt="imagen-producto">
             <h2>${producto.nombre}</h2>
-            <p>$${producto.precio}</p>
+            <p><strong>$${producto.precio}<strong/></p>
             <button id=${producto.id}>agregar al carrito</button>
         `
         tarjetas.appendChild(tarjeta)
@@ -172,25 +158,9 @@ function agregarProductoAlCarrito(productos, carrito, e) {
                 productoEnCarrito.unidades++
                 productoEnCarrito.precioTotal += productoEncontrado.precio
                 productoEnCarrito.stock--
-                Toastify({
-                    text: "Producto agregado exitosamente!",
-                    className: "info",
-                    gravity: "bottom",
-                    duration: 1500,
-                    style: {
-                        background: "linear-gradient(to bottom right, #00f155, #208041)",
-                    }
-                }).showToast();
+                tostada("Producto agregado exitosamente", "bottom", "#00f155", "#208041")
             } else {
-                Toastify({
-                    text: "Producto sin stock!",
-                    className: "info",
-                    gravity: "bottom",
-                    duration: 1500,
-                    style: {
-                        background: "linear-gradient(to bottom right, #f10000, #b60000)",
-                    }
-                }).showToast();
+                tostada("Sin stock", "bottom", "#f10000", "#b60000")
             }
         } else {
             carrito.push({
@@ -203,27 +173,11 @@ function agregarProductoAlCarrito(productos, carrito, e) {
                 precioTotal: productoEncontrado.precio,
                 stock: productoEncontrado.stock - 1
             })
-            Toastify({
-                text: "Producto agregado exitosamente!",
-                className: "info",
-                gravity: "bottom",
-                duration: 1500,
-                style: {
-                    background: "linear-gradient(to bottom right, #00f155, #208041)",
-                }
-            }).showToast();
+            tostada("Producto agregado exitosamente", "bottom", "#00f155", "#208041")
         }
         localStorage.setItem("carrito", JSON.stringify(carrito))
     } else {
-        Toastify({
-            text: "Producto sin stock!",
-            className: "info",
-            gravity: "bottom",
-            duration: 1500,
-            style: {
-                background: "linear-gradient(to bottom right, #f10000, #b60000)",
-            }
-        }).showToast();
+        tostada("Sin stock", "bottom", "#f10000", "#b60000")
     }
 }
 
@@ -291,5 +245,29 @@ function mostrarTotalDelCarrito(carrito) {
         <h2>El Total a pagar es: $${totalAPagar}<h2/>
     `
     totalCarrito.appendChild(total)
+}
+
+//funcion para mostrar tostada
+
+function tostada(mensaje, posicion, colorUno, colorDos) {
+    Toastify({
+        text: mensaje,
+        className: "info",
+        gravity: posicion,
+        duration: 1500,
+        style: {
+            background: `linear-gradient(to bottom right, ${colorUno}, ${colorDos})`,
+        }
+    }).showToast();
+}
+
+//funcion para mostrar alerta
+
+function alerta(icono,titulo,texto){
+    Swal.fire({
+        icon: icono,
+        title: titulo,
+        text: texto,
+      })
 }
 

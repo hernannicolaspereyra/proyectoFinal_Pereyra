@@ -26,7 +26,6 @@ header {
 
         .logo {
             grid-area: logo;
-
             img {
                 width: 70px;
                 height: 60px;
@@ -131,6 +130,11 @@ main {
             padding: 5px;
             align-items: center;
             justify-content: space-around;
+            button{
+                border-radius: 5%;
+                background-color: #2A2276;
+                color: white;
+            }
         }
     }
 
@@ -223,6 +227,16 @@ main {
 
                     button {
                         width: 20vh;
+                        border: 2px solid #2A2276;
+                        color: #2A2276;
+                        transition: .5s;
+                    }
+
+                    button:hover{
+                        border: 2px solid black;
+                        color: white;
+                        background-color: #2A2276;
+                        transition: .5s;
                     }
                 }
             }
@@ -271,10 +285,13 @@ main {
                         grid-area: button;
                         border-radius: 5%;
                         font-size: .7rem;
+                        color: green;
+                        border: 2px solid rgb(0, 173, 0);
                     }
 
                     button:hover {
                         background: linear-gradient(to bottom right, #00f155, #208041);
+                        color: black;
                     }
                 }
             }
@@ -406,6 +423,26 @@ footer {
 }
 
 @media screen and (min-width: 1024px) {
+    header{
+        nav{
+            grid-template-areas: 
+            "logo buscador buscador carrito"
+            ;
+            .buscador{
+                padding-top: 10px;
+                input{
+                    height: 40px;
+                    width: 600px;
+                }
+                button{
+                    height: 40px;
+                }
+            }
+            .btn-carrito{
+                padding-top: 7px;
+            }
+        }
+    }
     main {
         .carrito-de-compras {
             #tarjetas-carrito {
@@ -418,6 +455,12 @@ footer {
                     height: 200px;
                 }
             }
+        }
+    }
+    footer{
+        .contacto{
+            flex-direction: row;
+            gap: 6rem;
         }
     }
 }
