@@ -1,5 +1,3 @@
-//fech
-
 fetch("./productos.json")
     .then(respuesta => respuesta.json())
     .then(productos => principal(productos))
@@ -263,11 +261,11 @@ function tostada(mensaje, posicion, colorUno, colorDos) {
 
 //funcion para mostrar alerta
 
-function alerta(icono,titulo,texto){
+function alerta(icono, titulo, texto) {
     Swal.fire({
         icon: icono,
         title: titulo,
         text: texto,
-      })
+    })
 }
 
