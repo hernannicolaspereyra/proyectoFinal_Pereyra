@@ -26,6 +26,7 @@ header {
 
         .logo {
             grid-area: logo;
+
             img {
                 width: 70px;
                 height: 60px;
@@ -130,7 +131,8 @@ main {
             padding: 5px;
             align-items: center;
             justify-content: space-around;
-            button{
+
+            button {
                 border-radius: 5%;
                 background-color: #2A2276;
                 color: white;
@@ -225,14 +227,13 @@ main {
                     flex-direction: column;
                     gap: .5rem;
 
-                    button {
-                        width: 20vh;
+                    button {                        
                         border: 2px solid #2A2276;
                         color: #2A2276;
                         transition: .5s;
                     }
 
-                    button:hover{
+                    button:hover {
                         border: 2px solid black;
                         color: white;
                         background-color: #2A2276;
@@ -297,14 +298,14 @@ main {
             }
 
             #tarjetas::-webkit-scrollbar {
-                background-color: #e01b8b;
+                background-color: #D7D7D7;
                 border-radius: 20px;
                 border: 2px solid #A21F67;
                 width: 10px;
             }
 
             #tarjetas::-webkit-scrollbar-thumb {
-                background-color: #9e0a5e;
+                background-color: #757474;
                 border-radius: 20%;
             }
         }
@@ -387,9 +388,6 @@ footer {
             width: 100%;
             align-items: center;
             padding: 0 20px;
-
-            .productos-titulo {}
-
             .productos-tarjetas {
                 justify-content: space-between;
 
@@ -412,7 +410,7 @@ footer {
                         width: 150px;
 
                         img {
-                            width: 20vh;
+                            width: 15vh;
                             height: 20vh;
                         }
                     }
@@ -423,32 +421,37 @@ footer {
 }
 
 @media screen and (min-width: 1024px) {
-    header{
-        nav{
-            grid-template-areas: 
-            "logo buscador buscador carrito"
+    header {
+        nav {
+            grid-template-areas:
+                "logo buscador buscador carrito"
             ;
-            .buscador{
+
+            .buscador {
                 padding-top: 10px;
-                input{
+
+                input {
                     height: 40px;
                     width: 600px;
                 }
-                button{
+
+                button {
                     height: 40px;
                 }
             }
-            .btn-carrito{
+
+            .btn-carrito {
                 padding-top: 7px;
             }
         }
     }
+
     main {
         .carrito-de-compras {
             #tarjetas-carrito {
                 flex-wrap: wrap;
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: center;
 
                 .productos-carrito {
                     width: 250px;
@@ -457,10 +460,12 @@ footer {
             }
         }
     }
-    footer{
-        .contacto{
+
+    footer {
+        .contacto {
             flex-direction: row;
-            gap: 6rem;
+            gap: 2rem;
+            justify-content: space-between;
         }
     }
 }

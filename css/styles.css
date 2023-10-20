@@ -147,7 +147,6 @@ main {
         flex-direction: column;
         gap: .5rem; }
         main .productos .productos-tarjetas .filtros .filtros-botones button {
-          width: 20vh;
           border: 2px solid #2A2276;
           color: #2A2276;
           transition: .5s; }
@@ -194,12 +193,12 @@ main {
           background: linear-gradient(to bottom right, #00f155, #208041);
           color: black; }
     main .productos .productos-tarjetas #tarjetas::-webkit-scrollbar {
-      background-color: #e01b8b;
+      background-color: #D7D7D7;
       border-radius: 20px;
       border: 2px solid #A21F67;
       width: 10px; }
     main .productos .productos-tarjetas #tarjetas::-webkit-scrollbar-thumb {
-      background-color: #9e0a5e;
+      background-color: #757474;
       border-radius: 20%; }
 
 footer {
@@ -265,7 +264,7 @@ footer {
           flex-direction: column;
           width: 150px; }
           main .productos .productos-tarjetas #tarjetas .tarjeta-producto img {
-            width: 20vh;
+            width: 15vh;
             height: 20vh; } }
 
 @media screen and (min-width: 1024px) {
@@ -283,10 +282,11 @@ footer {
   main .carrito-de-compras #tarjetas-carrito {
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between; }
+    justify-content: center; }
     main .carrito-de-compras #tarjetas-carrito .productos-carrito {
       width: 250px;
       height: 200px; }
   footer .contacto {
     flex-direction: row;
-    gap: 6rem; } }
+    gap: 2rem;
+    justify-content: space-between; } }
